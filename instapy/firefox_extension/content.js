@@ -57,9 +57,17 @@ window.navigator.permissions.query = parameters => (
 );
 `;
 
-document.arrive('head', () => {
+/*document.arrive('head', () => {
   var script = document.createElement('script');
   script.innerHTML = customScript;
   script.type = 'text/javascript';
   document.head.insertBefore(script, document.head.children[0]);
+});*/
+document.arrive('head', () => {
+let head = document.getElementsByTagName("head")[0];
+var script = document.createElement( 'script' );
+script.textContent = customScript;
+script.type = 'text/javascript'; 
+
+head.insertBefore( script, head.firstChild );
 });

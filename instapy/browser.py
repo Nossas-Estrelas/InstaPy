@@ -110,6 +110,7 @@ def set_selenium_local_session(
     firefox_profile.set_preference("media.volume_scale", "0.0")
 
     # prevent Hide Selenium Extension: error
+    
     firefox_profile.set_preference("dom.webdriver.enabled", False)
     firefox_profile.set_preference("useAutomationExtension", False)
     firefox_profile.set_preference("general.platform.override", "iPhone")

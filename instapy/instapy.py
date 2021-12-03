@@ -411,9 +411,8 @@ class InstaPy:
             )
 
         # convert_selenium_browser(selenium_driver)
-        message = "Session started!"
+        message = "Session INICIADA!"
         highlight_print("browser", message, "initialization", "info", logger)
-
         return self
 
     def login(self):
@@ -5329,7 +5328,7 @@ class InstaPy:
 
         if any(stat for stat in stats):
             self.logger.info(
-                "Sessional Live Report:\n"
+                "Sessional Live STATUS:\n"
                 "\t|> LIKED {} images  |  ALREADY LIKED: {}\n"
                 "\t|> COMMENTED on {} images\n"
                 "\t|> FOLLOWED {} users  |  ALREADY FOLLOWED: {}\n"
@@ -5358,7 +5357,7 @@ class InstaPy:
             )
         else:
             self.logger.info(
-                "Sessional Live Report:\n"
+                "Sessional Live STATUS:\n"
                 "\t|> No any statistics to show\n"
                 "\n{}\n{}".format(owner_relationship_info, run_time_msg)
             )
