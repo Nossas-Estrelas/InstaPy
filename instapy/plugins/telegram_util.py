@@ -164,7 +164,7 @@ class InstaPyTelegramBot:
         if (self.__chat_id is None) and (self.__context is None):
             raise TelegramError
         else:
-            self.__context.bot.send_message(chat_id=self.__chat_id, text=text)
+            self.__context.bot.send_message(chat_id=self.__chat_id, text=text, parse_mode='html')
 
     @staticmethod
     def telegram_delete_session(session):
