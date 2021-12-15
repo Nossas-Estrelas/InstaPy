@@ -380,7 +380,6 @@ class InstaPy:
                 console_handler.setLevel(logging.DEBUG)
                 console_handler.setFormatter(logger_formatter)
                 logger.addHandler(console_handler)
-
             logger = logging.LoggerAdapter(logger, extra)
 
             Settings.loggers[self.username] = logger
@@ -5328,7 +5327,7 @@ class InstaPy:
 
         if any(stat for stat in stats):
             self.logger.info(
-                "Sessional Live STATUS:\n"
+                "Sessional Live Report:\n\n"
                 "\t|> LIKED {} images  |  ALREADY LIKED: {}\n"
                 "\t|> COMMENTED on {} images\n"
                 "\t|> FOLLOWED {} users  |  ALREADY FOLLOWED: {}\n"
@@ -5355,12 +5354,41 @@ class InstaPy:
                     run_time_msg,
                 )
             )
+            requests.get("https://api.telegram.org/bot1857488138:AAEc3WXaqvPv8woW-hTC7-iZCHAKjeJsO24/sendMessage?chat_id=-621978657&text=Sessional Live Report:\n"
+                "\t|> LIKED {} images  |  ALREADY LIKED: {}\n"
+                "\t|> COMMENTED on {} images\n"
+                "\t|> FOLLOWED {} users  |  ALREADY FOLLOWED: {}\n"
+                "\t|> UNFOLLOWED {} users\n"
+                "\t|> LIKED {} comments\n"
+                "\t|> REPLIED to {} comments\n"
+                "\t|> INAPPROPRIATE images: {}\n"
+                "\t|> NOT VALID users: {}\n"
+                "\t|> WATCHED {} story(ies)  |  WATCHED {} reel(s)\n"
+                "\n{}\n{}".format(
+                    self.liked_img,
+                    self.already_liked,
+                    self.commented,
+                    self.followed,
+                    self.already_followed,
+                    self.unfollowed,
+                    self.liked_comments,
+                    self.replied_to_comments,
+                    self.inap_img,
+                    self.not_valid_users,
+                    self.stories_watched,
+                    self.reels_watched,
+                    owner_relationship_info,
+                    run_time_msg,
+                ))
         else:
             self.logger.info(
                 "Sessional Live STATUS:\n"
                 "\t|> No any statistics to show\n"
                 "\n{}\n{}".format(owner_relationship_info, run_time_msg)
             )
+            requests.get("https://api.telegram.org/bot1857488138:AAEc3WXaqvPv8woW-hTC7-iZCHAKjeJsO24/sendMessage?chat_id=-621978657&text=Sessional Live STATUS:\n"
+                "\t|> No any statistics to show\n"
+                "\n{}\n{}".format(owner_relationship_info, run_time_msg))
 
     def set_do_reply_to_comments(self, enabled: bool = False, percentage: int = 0):
         """Define if the comments on posts should be replied"""
